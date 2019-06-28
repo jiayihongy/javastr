@@ -106,9 +106,12 @@
 			$.ajax({
 				url:'http://localhost:8080/mybatis_war_exploded/ListServelt',
 				type:'post',
+				data:{
+					user:'andersen'
+				},
 				success:function (res,status) {
 
-					console.log(res)
+					console.log(JSON.parse(res))
 				}
 			})
 		}
