@@ -1,6 +1,6 @@
 package com.andersen.bean;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
+
 
 public class Message {
     private String id;

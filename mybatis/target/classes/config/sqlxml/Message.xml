@@ -9,8 +9,14 @@
     </resultMap>
 
 
-    <select id="queryMessageList" parameterType="long" resultMap="mymess">
-        select ID,COMMAND,DESCRIPTION,CONTENT from message
+    <select id="queryMessageList" parameterType="com.andersen.bean.Message" resultMap="mymess">
+        select ID,COMMAND,DESCRIPTION,CONTENT from message where 1=1
+        <if test="command !=null and !&quot;&quot;.equals(command.trim())">
+            and COMMAND = #{command}
+        </if>
+        <if test="description !=null and !&quot;&quot;.equals(description.trim())">
+            and DESCRIPTION like '%'#{description}'%'
+        </if>
     </select>
 
 </mapper>
