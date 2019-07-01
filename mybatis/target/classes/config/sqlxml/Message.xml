@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="Message" >
+<mapper namespace="Message">
     <resultMap id="mymess" type="com.andersen.bean.Message">
         <id column="ID" jdbcType="INTEGER" property="id"></id>
         <result column="COMMAND" jdbcType="VARCHAR" property="command"></result>
@@ -10,13 +10,18 @@
 
 
     <select id="queryMessageList" parameterType="com.andersen.bean.Message" resultMap="mymess">
-        select ID,COMMAND,DESCRIPTION,CONTENT from message where 1=1
-        <if test="command !=null and !&quot;&quot;.equals(command.trim())">
-            and COMMAND = #{command}
-        </if>
-        <if test="description !=null and !&quot;&quot;.equals(description.trim())">
-            and DESCRIPTION like '%'#{description}'%'
-        </if>
+        select ID,COMMAND,DESCRIPTION,CONTENT from message
+        <where>
+            <if test="command !=null and !&quot;&quot;.equals(command.trim())">
+                and COMMAND = #{command}
+            </if>
+            <if test="description !=null and !&quot;&quot;.equals(description.trim())">
+                and DESCRIPTION like '%' #{description} '%'
+            </if>
+        </where>
     </select>
+    <delete id="delOne" parameterType="int">
+        delete from message where id = #{_parameter}
+    </delete>
 
 </mapper>

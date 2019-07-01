@@ -9,9 +9,17 @@
     <servlet-name>ListServelt</servlet-name>
     <servlet-class>com.andersen.servlet.ListServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>DelOneServelt</servlet-name>
+    <servlet-class>com.andersen.servlet.DelOneServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>ListServelt</servlet-name>
     <url-pattern>/ListServelt</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DelOneServelt</servlet-name>
+    <url-pattern>/DelOneServelt</url-pattern>
   </servlet-mapping>
   
 </web-app>
