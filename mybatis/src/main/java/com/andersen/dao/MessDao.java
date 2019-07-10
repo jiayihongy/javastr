@@ -14,7 +14,21 @@ public class MessDao {
     * */
     public List<Message> getList(String command,String description){
         List<Message> messageList = new ArrayList<Message>();
-
+        DBAccess dbAccess = new DBAccess();
+        Message message = new Message();
+        message.setCommand(command);
+        message.setDescription(description);
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = dbAccess.getSqlSession();
+           messageList = sqlSession.selectList("Message.queryMessageList", message);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if(sqlSession != null){
+                sqlSession.close();
+            }
+        }
         return messageList;
     }
 

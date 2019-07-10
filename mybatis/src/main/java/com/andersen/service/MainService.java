@@ -1,6 +1,9 @@
 package com.andersen.service;
 
+import com.andersen.bean.Message;
 import com.andersen.dao.MessDao;
+
+import java.util.List;
 
 public class MainService {
     public void delOne(String id){
@@ -11,6 +14,7 @@ public class MainService {
         }
 
     }
+
 
 
 }
